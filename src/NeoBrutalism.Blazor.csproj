@@ -31,21 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.5" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.201" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.12" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.401" PrivateAssets="All" />
   </ItemGroup>
-
-  <!-- Tailwind CSS build -->
-  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
-    <TailwindExec>node_modules\.bin\tailwindcss.cmd</TailwindExec>
-  </PropertyGroup>
-  <PropertyGroup Condition="!$([MSBuild]::IsOSPlatform('Windows'))">
-    <TailwindExec>./node_modules/.bin/tailwindcss</TailwindExec>
-  </PropertyGroup>
-
-  <Target Name="BuildTailwind" BeforeTargets="Build">
-    <Exec Command="$(TailwindExec) -i ./input.css -o ./wwwroot/nb-design-system.css --minify"
-          WorkingDirectory="$(MSBuildProjectDirectory)" />
-  </Target>
 
 </Project>
